@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Nosotros · ODS 2</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<style>
+  html { 
+    scroll-behavior: smooth; 
+}
+  body { 
+    font-family: 'Roboto', system-ui, sans-serif; 
+    background: #f4f4f4; 
+    color: #0b3d22; 
+  }
+  header { 
+    background-color: #87ceeb; 
+    font-weight: 700; 
+    color: #0b3d22; 
+}
+  header a { 
+    color: #0b5a26; 
+}
+
+  .hero {
+    background:
+      linear-gradient(rgba(11, 61, 34, .65), rgba(11, 61, 34, .65)),
+      url('img.png') center / cover no-repeat,
+      #1f7a47;
+    color: #fff;
+    text-align: center;
+    padding: 80px 24px;
+    min-height: 340px;
+  }
+  .hero h1 { font-weight: 500; 
+    font-size: clamp(28px, 5vw, 46px); 
+    max-width: 800px; 
+    margin: 0 auto 12px; 
+}
+  .hero p { 
+    max-width: 640px; 
+    margin: 0 auto 20px; 
+    font-size: 20px; 
+    font-weight: 300; 
+}
+  .enlaces { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 8px 24px; 
+}
+  .enlaces a { 
+    color: #fff; 
+    font-weight: 500; 
+    text-decoration: underline; 
+}
+
+  .seccion { 
+    padding: 48px 20px; 
+}
+  .seccion h2 { 
+    text-align: center; 
+    color: #0b5a26; 
+    margin-bottom: 8px; 
+}
+  .sub { 
+    text-align: center; 
+    margin-bottom: 24px; 
+}
+  .azul { 
+    background: #87ceeb; 
+}
+  .verde { 
+    background: #90ee90; 
+}
+  .caja { 
+    max-width: 760px; 
+    margin: 0 auto; 
+}
+
+  .tarjeta {
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(241, 235, 218, 0.15);
+    padding: 22px;
+    margin-bottom: 16px;
+  }
+  .tarjeta h3 { 
+    color: #1f7a47; 
+    margin-top: 0; 
+  }
+  .tarjeta p { 
+    margin: 0; 
+    font-size: 18px; 
+    line-height: 1.5; 
+  }
+
+  .campo { 
+    margin-bottom: 14px; 
+  }
+  .campo label { 
+    display: block; 
+    font-weight: 500; 
+    margin-bottom: 4px; 
+  }
+  .campo input, .campo select {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: #0b3d22;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+  }
+  .btn-verde, .btn-naranja {
+    display: inline-block;
+    padding: 12px 36px;
+    border: 0;
+    border-radius: 32px;
+    color: #0b3d22;
+    font-size: 19px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-verde { 
+    background: #3ddc3d; 
+  }
+
+  .resultado {
+    background: #e8f6ee;
+    border-radius: 12px;
+    padding: 18px 22px;
+    margin-top: 20px;
+  }
+  .resultado p { 
+    margin: 0 0 8px; 
+    font-size: 19px; 
+  }
+  .resultado strong { 
+    font-size: 24px; 
+    color: #1f7a47; 
+  }
+  .resultado .extra { 
+    margin: 12px 0 0; 
+    font-size: 17px; 
+  }
+  .nota { 
+    font-size: 14px; 
+    margin-top: 16px; 
+  }
+
+  :where(.accordion-icon) { 
+    width: 1em; 
+    height: 1em; 
+  }
+  .accordion { 
+    margin-bottom: 16px; 
+    }
+</style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <img src="logo.png" alt="Logo" width="45" height="45" class="d-inline-block align-text-top">
+        NeO Hambryx
+        <a href="index.html">Volver al inicio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+    <div class="hero">
+      <h1>Que ningún alimento se pierda mientras alguien tiene hambre</h1>
+      <p>Nuestro marco, propósito y contribución al ODS 2: Hambre Cero.</p>
+      <div class="enlaces">
+        <a href="#item-mision">Misión y Visión</a>
+        <a href="#ods">ODS 2</a>
+        <a href="#problema">Problema vs. Solución</a>
+      </div>
+    </div>
+
+    <section class="seccion" id="mision">
+      <h2>Quiénes somos</h2>
+      <div class="caja">
+        <div class="accordion">
+          <details class="accordion-item" name="quienes" id="item-mision" open>
+            <summary class="accordion-header">
+              Misión
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              Reducir el desperdicio de alimentos conectando excedentes de productores, comercios y hogares con las personas que más los necesitan, de forma segura y digna.
+            </div>
+          </details>
+          <details class="accordion-item" name="quienes" id="item-vision">
+            <summary class="accordion-header">
+              Visión
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              Ser para 2030 una red de referencia donde el alimento comestible se consume y no se tira.
+            </div>
+          </details>
+          <details class="accordion-item" name="quienes" id="ods">
+            <summary class="accordion-header">
+              ODS 2: Hambre Cero
+              <svg class="accordion-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="m2 5 6 6 6-6"/></svg>
+            </summary>
+            <div class="accordion-body">
+              El Objetivo de Desarrollo Sostenible 2 de la ONU busca poner fin al hambre, lograr la seguridad alimentaria y mejorar la nutrición. Nosotros contribuimos rescatando comida que sobra y llevándola a quien carece de ella.
+            </div>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <section class="seccion" id="problema">
+      <h2>El problema vs. nuestra solución</h2>
+      <p class="sub">Cambia los datos y el porcentaje para ver el impacto.</p>
+      <div class="caja tarjeta">
+
+        <div class="campo">
+          <label for="desecho">Alimento desechado (toneladas/día)</label>
+          <input type="number" id="desecho" value="55910" min="0">
+        </div>
+        <div class="campo">
+          <label for="personas">Personas con carencia alimentaria</label>
+          <input type="number" id="personas" value="23400000" min="1">
+        </div>
+        <div class="campo">
+          <label for="kgpersona">Kg de alimento por persona al día</label>
+          <input type="number" id="kgpersona" value="1.5" min="0.1" step="0.1">
+        </div>
+        <div class="campo">
+          <label for="porcentaje">Porcentaje del desperdicio que rescatamos (%)</label>
+          <input type="number" id="porcentaje" value="1" min="0" max="100" step="0.5">
+        </div>
+
+        <button type="button" class="btn-verde" id="calcular">Calcular</button>
+
+        <div class="resultado">
+          <p>Kg rescatados por día: <strong id="r-kg"></strong></p>
+          <p>Personas alimentadas por día: <strong id="r-personas"></strong></p>
+          <p>% de la carencia cubierta: <strong id="r-cobertura"></strong></p>
+          <p class="extra" id="r-extra"></p>
+        </div>
+
+        <p class="nota">Cifras de referencia de México (editables): ~55,900 t/día de alimento desperdiciado y ~23.4 millones de personas con carencia alimentaria (CONEVAL 2022). Verifica fuentes actualizadas.</p>
+      </div>
+    </section>
+
+  </main>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+<script>
+  const $ = (id) => document.getElementById(id);
+  const numero = (n) => Math.round(n).toLocaleString('es-MX');
+
+  function calcular() {
+    const toneladas = parseFloat($('desecho').value) || 0;
+    const personas = parseFloat($('personas').value) || 0;
+    const kgPorPersona = parseFloat($('kgpersona').value) || 0;
+    let porcentaje = parseFloat($('porcentaje').value) || 0;
+    porcentaje = Math.min(Math.max(porcentaje, 0), 100);
+
+    if (kgPorPersona <= 0 || personas <= 0) {
+      $('r-kg').textContent = '—';
+      $('r-personas').textContent = '—';
+      $('r-cobertura').textContent = '—';
+      $('r-extra').textContent = 'Escribe personas con carencia y kg por persona mayores a cero.';
+      return;
+    }
+
+    const kgRescatados = toneladas * 1000 * porcentaje / 100;
+    const alimentadas = kgRescatados / kgPorPersona;
+    const cobertura = alimentadas / personas * 100;
+
+    const porPunto = toneladas * 1000 * 0.01 / kgPorPersona;
+
+    $('r-kg').textContent = numero(kgRescatados);
+    $('r-personas').textContent = numero(alimentadas);
+    $('r-cobertura').textContent = cobertura.toFixed(1) + '%';
+    $('r-extra').textContent =
+      'Cada 1% más que rescatamos alimenta a ' + numero(porPunto) + ' personas más por día. Con tu ayuda llegamos ahí.';
+  }
+  $('calcular').addEventListener('click', calcular);
+  document.querySelectorAll('.campo input[type="number"]').forEach(i => i.addEventListener('input', calcular));
+  calcular();
+
+  function abrirDesdeEnlace() {
+    const el = document.querySelector(location.hash || 'x-none');
+    if (el && el.tagName === 'DETAILS') el.open = true;
+  }
+  window.addEventListener('hashchange', abrirDesdeEnlace);
+  abrirDesdeEnlace();
+</script>
+</body>
+</html>

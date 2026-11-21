@@ -1,0 +1,280 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mercado Solidario</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<style>
+  body { font-family: 'Roboto', system-ui, sans-serif; background: #f4f4f4; color: #0b3d22; }
+  header { background-color: #87ceeb; font-weight: 700; color: #0b3d22; }
+  header a { color: #0b5a26; }
+
+  .hero {
+    background: #1f7a47;
+    color: #fff;
+    text-align: center;
+    padding: 40px 24px;
+  }
+  .hero h1 { font-weight: 500; font-size: clamp(28px, 5vw, 44px); margin: 0 0 8px; }
+  .hero p { max-width: 640px; margin: 0 auto; font-size: 20px; font-weight: 300; }
+
+  .catalogo { background: #90ee90; padding: 32px 20px 48px; }
+  .aviso { text-align: center; margin-bottom: 16px; }
+  .aviso a { color: #0b5a26; font-weight: 500; }
+
+  .filtro {
+    max-width: 320px;
+    margin: 0 auto 24px;
+  }
+  .filtro label { display: block; font-weight: 500; margin-bottom: 4px; }
+  .filtro select {
+    width: 100%;
+    padding: 10px;
+    font-size: 18px;
+    color: #0b3d22;
+    background: #fff;
+    border: 1px solid #bbb;
+    border-radius: 8px;
+  }
+
+  .lista {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .producto {
+    flex: 1 1 250px;
+    max-width: 320px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+    overflow: hidden;
+  }
+  .producto img { display: block; width: 100%; height: 150px; object-fit: cover; background: #e8f6ee; }
+  .producto .cuerpo { padding: 16px; }
+  .producto h3 { margin: 0 0 2px; font-size: 20px; color: #1f7a47; }
+  .producto .lugar { margin: 0 0 10px; font-size: 15px; }
+  .producto ul { list-style: none; padding: 0; margin: 0 0 14px; font-size: 17px; line-height: 1.7; }
+
+  .btn-reservar {
+    display: block;
+    width: 100%;
+    padding: 12px;
+    border: 0;
+    border-radius: 32px;
+    background: #ff9100;
+    color: #0b3d22;
+    font-size: 18px;
+    font-weight: 500;
+    cursor: pointer;
+  }
+  .btn-reservar:disabled { background: #3ddc3d; cursor: default; }
+
+  #vacio { display: none; text-align: center; font-size: 18px; }
+</style>
+</head>
+<body>
+
+  <header>
+    <nav class="navbar">
+      <div class="container-fluid">
+        <img src="logo.png" alt="Logo" width="45" height="45" class="d-inline-block align-text-top">
+        NeO Hambryx
+        <a href="index.html">Volver al inicio</a>
+      </div>
+    </nav>
+  </header>
+
+  <main>
+
+    <div class="hero">
+      <h1>Mercado Solidario</h1>
+      <p>Alimentos disponibles cerca de ti. Reserva rápido y recógelos antes de la hora límite.</p>
+    </div>
+
+    <section class="catalogo">
+      <p class="aviso">
+        Para comedores comunitarios y usuarios registrados.
+        ¿Aún no tienes cuenta? <a href="unete.html">Únete aquí</a>.
+      </p>
+      <p class="aviso">Ejemplo de datos, cámbialos por los reales.</p>
+
+      <div class="filtro">
+        <label for="tipo">Tipo de alimento</label>
+        <select id="tipo">
+          <option value="todos">Todos</option>
+          <option value="Fresco">Fresco</option>
+          <option value="Empacado">Empacado</option>
+          <option value="Preparado">Preparado</option>
+        </select>
+      </div>
+
+      <div class="lista" id="lista">
+
+        <article class="producto" data-tipo="Empacado">
+          <img src="bol.png" alt="Panadería Lecaroz">
+          <div class="cuerpo">
+            <h3>Pan del día</h3>
+            <p class="lugar">Panadería Lecaroz · 0.4 km</p>
+            <ul>
+              <li>Tipo: Empacado</li>
+              <li>Cantidad: 30 porciones</li>
+              <li>Recoger antes de las 20:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Preparado">
+          <img src="fla.png" alt="La Cocinita Doña Mary">
+          <div class="cuerpo">
+            <h3>Guisados</h3>
+            <p class="lugar">La Cocinita Doña Mary · 0.9 km</p>
+            <ul>
+              <li>Tipo: Preparado</li>
+              <li>Cantidad: 25 porciones</li>
+              <li>Recoger antes de las 17:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Preparado">
+          <img src="cdñ.png" alt="La Casa de Toño">
+          <div class="cuerpo">
+            <h3>Comidas</h3>
+            <p class="lugar">La Casa de Toño · 1.1 km</p>
+            <ul>
+              <li>Tipo: Preparado</li>
+              <li>Cantidad: 20 porciones</li>
+              <li>Recoger antes de las 18:30</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Fresco">
+          <img src="fyv.png" alt="Soriana">
+          <div class="cuerpo">
+            <h3>Frutas y verduras</h3>
+            <p class="lugar">Soriana · 1.8 km</p>
+            <ul>
+              <li>Tipo: Fresco</li>
+              <li>Cantidad: 15 kg</li>
+              <li>Recoger antes de las 19:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Preparado">
+          <img src="tac.png" alt="Taquería El primo">
+          <div class="cuerpo">
+            <h3>Tacos y guarniciones</h3>
+            <p class="lugar">Taquería El Primo · 2.2 km</p>
+            <ul>
+              <li>Tipo: Preparado</li>
+              <li>Cantidad: 40 porciones</li>
+              <li>Recoger antes de las 22:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Fresco">
+          <img src="que.png" alt="Central de Abastos">
+          <div class="cuerpo">
+            <h3>Frutas y verduras</h3>
+            <p class="lugar">Central de Abastos · 8 km</p>
+            <ul>
+              <li>Tipo: Fresco</li>
+              <li>Cantidad: 7.5 kg</li>
+              <li>Recoger antes de las 17:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Fresco">
+          <img src="car.png" alt="Walmart">
+          <div class="cuerpo">
+            <h3>Carnes rojas</h3>
+            <p class="lugar">Walmart · 5.5 km</p>
+            <ul>
+              <li>Tipo: Fresco</li>
+              <li>Cantidad: 10 kg</li>
+              <li>Recoger antes de las 21:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Empacado">
+          <img src="bim.png" alt="Bimbo">
+          <div class="cuerpo">
+            <h3>Pan</h3>
+            <p class="lugar">Bimbo · 4.4 km</p>
+            <ul>
+              <li>Tipo: Empacado</li>
+              <li>Cantidad: 50 porciones</li>
+              <li>Recoger antes de las 19:30</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+        <article class="producto" data-tipo="Empacado">
+          <img src="pmx.png" alt="PanaMex">
+          <div class="cuerpo">
+            <h3>Pan del día</h3>
+            <p class="lugar">PanaMex · 6.7 km</p>
+            <ul>
+              <li>Tipo: Empacado</li>
+              <li>Cantidad: 35 porciones</li>
+              <li>Recoger antes de las 18:00</li>
+            </ul>
+            <button type="button" class="btn-reservar">Reservar</button>
+          </div>
+        </article>
+
+      </div>
+      <p id="vacio">No hay alimentos de este tipo por ahora.</p>
+    </section>
+
+  </main>
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+<script>
+  const productos = document.querySelectorAll('.producto');
+  const filtro = document.getElementById('tipo');
+  const vacio = document.getElementById('vacio');
+
+  // Filtrar por tipo de alimento
+  filtro.addEventListener('change', () => {
+    let visibles = 0;
+    productos.forEach(p => {
+      const mostrar = filtro.value === 'todos' || p.dataset.tipo === filtro.value;
+      p.style.display = mostrar ? '' : 'none';
+      if (mostrar) visibles++;
+    });
+    vacio.style.display = visibles ? 'none' : 'block';
+  });
+
+  // Reservar
+  document.querySelectorAll('.btn-reservar').forEach(boton => {
+    boton.addEventListener('click', () => {
+      boton.textContent = '✓ Reservado';
+      boton.disabled = true;
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,430 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NeOHambryx</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-B/GM4XqrwHnWXNOWMbloTmrYXZg10cakYGmpfsR/bbzQ6JAJI4ihuyADKLnBgrCe" crossorigin="anonymous">
+<style>
+  body { font-family: 'Roboto', system-ui, sans-serif; background: #f4f4f4; color: #1a1a1a; }
+  header { background-color: #87ceeb; font-family: 'Roboto', sans-serif; font-weight: 700; color: #111; }
+
+  .hero {
+    position: relative;  
+    height: 520px;
+    overflow: hidden;
+    background: #1f7a47;   
+  }
+
+  .carrusel { 
+    position: absolute;
+    inset: 0; 
+    z-index: 0; 
+}
+  .carrusel img {
+    position: absolute; 
+    inset: 0;
+    width: 100%; 
+    height: 100%;
+    object-fit: cover;
+    opacity: 0;
+    transition: opacity 1s;
+  }
+  .carrusel img.activa {
+   opacity: 1; 
+}
+
+  .hero::after {
+    content: "";
+    position: absolute; inset: 0;
+    background: rgba(0, 0, 0, .5);
+    z-index: 1;
+  }
+
+  .hero-contenido {
+    position: absolute; 
+    inset: 0;
+    z-index: 2;
+    display: flex; 
+    flex-direction: column;
+    align-items: center; 
+    justify-content: center;
+    gap: 20px; 
+    padding: 0 24px;
+    color: #fff; 
+    text-align: center;
+  }
+  .hero-contenido h1 {
+    margin: 0; 
+    max-width: 760px;
+    font-size: clamp(32px, 6vw, 64px);
+    font-weight: 500; 
+    line-height: 1.12; 
+    text-wrap: balance;
+  }
+  .hero-contenido p {
+    margin: 0; 
+    max-width: 700px;
+    font-size: clamp(17px, 2.4vw, 22px); 
+    font-weight: 300; 
+    line-height: 1.5;
+  }
+  .botones { 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: center; 
+    gap: 16px; 
+    margin-top: 8px; 
+}
+
+  .puntos {
+    position: absolute; 
+    left: 0; 
+    right: 0; 
+    bottom: 16px;
+    z-index: 3; 
+    display: flex; 
+    justify-content: center; 
+    gap: 10px;
+  }
+  .puntos button {
+    width: 12px; 
+    height: 12px; 
+    padding: 0; 
+    border: 0; 
+    border-radius: 50%;
+    background: rgba(255, 255, 255, .5); 
+    cursor: pointer;
+  }
+  .puntos button.activo {
+     background: #fff; 
+    }
+
+  .btn-naranja, .btn-verde {
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    min-height: 52px; 
+    padding: 0 36px; 
+    border-radius: 32px;
+    font-size: 19px; 
+    font-weight: 500; 
+    color: #1a1a1a; 
+    text-decoration: none;
+  }
+  .btn-naranja { 
+    background: #ff9100;
+ }
+  .btn-verde { 
+    background: #3ddc3d;
+ }
+
+  /* ===== Secciones ===== */
+  .seccion { padding: 64px 24px; }
+  .seccion h2 {
+    margin: 0 0 32px;
+    text-align: center;
+    font-size: clamp(26px, 4vw, 34px);
+    font-weight: 700;
+    color: #0b5a26;
+  }
+  .seccion-azul  { background: #87ceeb; }
+  .seccion-verde { background: #90ee90; }
+
+  /* ===== Logística: tarjetas ===== */
+  .ca {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 24px;
+    max-width: 1100px;
+    margin: 0 auto;
+  }
+  .ca .card {
+    flex: 1 1 260px;
+    max-width: 320px;
+    background: #ffffff;
+    border: 0;
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .15);
+    transition: transform .2s, box-shadow .2s;
+  }
+  .ca .card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, .2);
+  }
+  .ca .card img {
+    display: block;
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    background: #e6f4ea;
+  }
+  .card-body {
+    background: #ffffff;
+    margin: 0;
+    padding: 20px;
+    text-align: center;
+  }
+  .card-body h4 {
+    margin: 0 0 6px;
+    font-size: 22px;
+    font-weight: 700;
+    color: #1f7a47;
+  }
+  .card-body .card-text {
+    margin: 0 0 6px;
+    color: #2b2b2b;
+  }
+  .card-body strong {
+    font-size: 30px;
+    font-weight: 700;
+    color: #1f7a47;
+  }
+
+  /* ===== El viaje del plato: pestañas ===== */
+  .el .nav-tabs {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+    max-width: 1000px;
+    margin: 0 auto 24px;
+    border: 0;
+  }
+  .el .nav-link {
+    padding: 10px 24px;
+    border: 0;
+    border-radius: 24px;
+    background: #ffffff;
+    color: #0b5a26;
+    font-weight: 500;
+    font-size: 17px;
+  }
+  .el .nav-link.active {
+    background: #1f7a47;
+    color: #ffffff;
+  }
+  .tab-content {
+    max-width: 1000px;
+    margin: 0 auto;
+    background: #ffffff;
+    border-radius: 20px;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .15);
+    padding: 32px 24px;
+  }
+  .tab-content > .active {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+  .tab-content p {
+    flex: 1 1 280px;
+    margin: 0;
+    font-size: 20px;
+    line-height: 1.5;
+    color: #1a1a1a;
+  }
+  .tab-content img {
+    flex: 1 1 280px;
+    max-width: 380px;
+    width: 100%;
+    height: auto;
+    border-radius: 16px;
+  }
+
+  .map iframe {
+    display: block;
+    max-width: 1000px;
+    margin: 0 auto;
+    box-shadow: 0 4px 14px rgba(0, 0, 0, .18);
+  }
+</style>
+</head>
+<body>
+
+  <header>
+        <nav class="navbar md:navbar-expand bg-1">
+  <div class="container-fluid">
+     <img src="logo.png" alt="Logo" width="45" height="45" class="d-inline-block align-text-top">
+        NeO Hambryx
+    <button class="btn-icon navbar-toggler" type="button" data-bs-toggle="drawer" data-bs-target="#navbarDrawer" aria-controls="navbarDrawer" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon" aria-hidden="true"></span>
+    </button>
+    <dialog class="drawer drawer-end" tabindex="-1" id="navbarDrawer" aria-labelledby="navbarDrawerLabel">
+      <div class="drawer-header">
+        <h5 class="drawer-title" id="navbarDrawerLabel">Menu</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="drawer" aria-label="Close"></button>
+      </div>
+      <div class="drawer-body mb-2 md:mb-0">
+        <ul class="nav navbar-nav me-auto">
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="index.html">Inicio</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="cambio.html">Nosotros</a>
+          </li>
+          <li class="nav-item">
+            <button class="nav-link" type="button" data-bs-toggle="menu" aria-expanded="false">
+              Menu
+            </button>
+            <div class="menu">
+              <a class="menu-item" href="dona.html">Express Donate</a>
+              <a class="menu-item" href="zero.html">Zero Waste</a>
+              <a class="menu-item" href="unete.html">Unete al Cambio</a>
+            </div>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link active" aria-current="page" href="mercado.html">Mercado Solidario</a>
+          </li>
+        </ul>
+        <form class="hstack gap-2" role="search">
+          <input class="form-control" type="search" placeholder="Search" aria-label="Search"/>
+          <button class="btn-solid btn-icon theme-secondary" type="submit">
+            <svg class="bi" width="16" height="16"><use href="#search" /></svg>
+          </button>
+        </form>
+      </div>
+    </dialog>
+  </div>
+</nav>
+  </header>
+
+  <main>
+
+    <div class="hero">
+
+      <div class="carrusel" id="carrusel">
+        <img class="activa" src="neo.png" alt="Jóvenes apoyando">
+        <img src="ham.png" alt="Jovenes entregando">
+        <img src="nh.png" alt="Jovenes ODS">
+      </div>
+
+      <div class="hero-contenido">
+        <h1>La comida no se tira. Se comparte.</h1>
+        <p>Conectamos excedentes de restaurantes y supermercados con comedores comunitarios.</p>
+        <div class="botones">
+          <a class="btn-naranja" href="dona.html">Tengo excedente</a>
+          <a class="btn-verde" href="mercado.html">Necesito alimentos</a>
+        </div>
+      </div>
+
+      <div class="puntos" id="puntos" aria-label="Seleccionar imagen"></div>
+    </div>
+    <div class="seccion">
+        <h2>Logística</h2>
+    <div class="ca">
+        <section class="card">
+            <img src="don.png" class="card-img-top" alt="Donaciones">
+            <div class="card-body">
+                <h4 class="card-title">Donaciones</h4>
+                <p class="card-text">Kg de comida recolectadas hoy: </p>
+               <strong id="kg">125 kg</strong>
+              </div>
+        </section>
+        <section class="card">
+            <img src="res.png" class="card-img-top" alt="Reservas">
+            <div class="card-body">
+                <h4 class="card-title">Raciones</h4>
+                <p class="card-text">Comidas servidas hoy: </p>
+                <strong id="raciones">340</strong>
+              </div>
+        </section>
+        <section class="card">
+            <img src="ali.png" class="card-img-top" alt="Alianzas">
+            <div class="card-body">
+                <h4 class="card-title">Alianzas</h4>
+                <p class="card-text">Empresas aliadas de NeO Hambryx: </p>
+               <strong id="empresas-n">18</strong>
+              </div>
+        </section>
+    </div>
+</div>
+<div class="el seccion seccion-azul">
+  <h2>El viaje del plato</h2>
+<ul class="nav nav-tabs" id="myTab" role="tablist">
+  <li class="nav-item" role="presentation">
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">1- Publica</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">2- Reserva</button>
+  </li>
+  <li class="nav-item" role="presentation">
+    <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">3- Entrega</button>
+  </li>
+</ul>
+<div class="tab-content" id="myTabContent">
+  <div class="tab-pane show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
+    <p>La empresa o negocio sube los productos que va a donar</p>
+    <img src="reg.png" class="img-67" alt="Registro de la comida">
+  </div>
+  <div class="tab-pane" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
+    <p>El comedor elige lo que necesita</p>
+    <img src="sol.png" class="img-67" alt="Solicitud de la comida">
+  </div>
+  <div class="tab-pane" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+    <p>El plato se entrega a quien lo necesita</p>
+    <img src="cho.png" class="img-67" alt="Entrega de la comida">
+  </div>
+</div>
+</div>
+<div class="map seccion seccion-verde">
+  <h2>Donaciones activas en tu zona</h2>
+    <iframe id="mapa" width="100%" height="400" style="border:0;border-radius:16px"
+  src="https://www.openstreetmap.org/export/embed.html?bbox=-99.2,19.3,-99.0,19.5&layer=mapnik"></iframe>
+
+</div>
+
+
+<script type="module" src="https://cdn.jsdelivr.net/npm/bootstrap@6.0.0-alpha.1/dist/js/bootstrap.bundle.min.js" integrity="sha384-1a/pXj49ZQ1aHEmrJ+gMw1otqoVsYwlEnlD8mIfY2TV03r20Y0CN7uqx1tQogjPL" crossorigin="anonymous"></script>
+
+<script>
+  const fotos = document.querySelectorAll('#carrusel img');
+  const contenedorPuntos = document.getElementById('puntos');
+  let actual = 0;
+  let temporizador;
+
+  fotos.forEach((foto, i) => {
+    const punto = document.createElement('button');
+    punto.type = 'button';
+    punto.setAttribute('aria-label', 'Imagen ' + (i + 1));
+    punto.addEventListener('click', () => { mostrar(i); reiniciar(); });
+    contenedorPuntos.appendChild(punto);
+  });
+  const puntos = contenedorPuntos.querySelectorAll('button');
+
+  function mostrar(n) {
+    fotos[actual].classList.remove('activa');
+    puntos[actual].classList.remove('activo');
+    actual = n;
+    fotos[actual].classList.add('activa');
+    puntos[actual].classList.add('activo');
+  }
+
+  function siguiente() { mostrar((actual + 1) % fotos.length); }
+  function reiniciar() { clearInterval(temporizador); temporizador = setInterval(siguiente, 4000); }
+
+  mostrar(0);
+  reiniciar();
+   function aleatorio(min, max) {
+    return Math.floor(Math.random() * (max - min + 1)) + min;
+  }
+
+  setInterval(() => {
+    document.getElementById('kg').textContent = aleatorio(100, 160) + ' kg';
+    document.getElementById('raciones').textContent = aleatorio(300, 400);
+  }, 15000); 
+   navigator.geolocation.getCurrentPosition(pos => {
+    const lat = pos.coords.latitude, lon = pos.coords.longitude, d = 0.01;
+    document.getElementById('mapa').src =
+      `https://www.openstreetmap.org/export/embed.html?bbox=${lon-d},${lat-d},${lon+d},${lat+d}&layer=mapnik&marker=${lat},${lon}`;
+  });
+</script>
+</body>
+</html>
